@@ -130,47 +130,40 @@ class MainActivity : AppCompatActivity() {
     // ── INYECCIÓN DE CREDENCIALES ─────────────────────────────────────────────
 
     private fun injectCredentials() {
-        val user = savedUser.replace("'", "\\'")
-        val pass = savedPass.replace("'", "\\'")
+    val user = savedUser.replace("'", "\\'")
+    val pass = savedPass.replace("'", "\\'")
 
-        val js = """
-        (function() {
-            // Selectores comunes para routers
-            var userSelectors = [
-                'input[type=text]', 'input[name*=user]', 'input[id*=user]',
-                'input[name*=login]', 'input[id*=login]', 'input[name*=name]',
-                'input[placeholder*=user]', 'input[placeholder*=User]',
-                'input[type=email]', '#username', '#user', '#login'
-            ];
-            var passSelectors = [
-                'input[type=password]', 'input[name*=pass]', 'input[id*=pass]',
-                '#password', '#pass', '#pwd'
-            ];
+    val js = """
+    (function() {
+        function setNativeValue(el, value) {
+            var nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+                window.HTMLInputElement.prototype, 'value').set;
+            nativeInputValueSetter.call(el, value);
+            el.dispatchEvent(new Event('input', {bubbles:true}));
+            el.dispatchEvent(new Event('change', {bubbles:true}));
+            el.dispatchEvent(new Event('keyup', {bubbles:true}));
+        }
 
-            function fillField(selectors, value) {
-                for (var i = 0; i < selectors.length; i++) {
-                    var el = document.querySelector(selectors[i]);
-                    if (el && el.offsetParent !== null) {
-                        el.value = value;
-                        el.dispatchEvent(new Event('input', {bubbles: true}));
-                        el.dispatchEvent(new Event('change', {bubbles: true}));
-                        return true;
-                    }
-                }
-                return false;
+        var inputs = document.querySelectorAll('input');
+        var userField = null;
+        var passField = null;
+
+        inputs.forEach(function(el) {
+            if (!el.offsetParent && el.type !== 'hidden') return;
+            if (el.type === 'password') {
+                passField = el;
+            } else if (el.type === 'text' || el.type === 'email' || el.type === '') {
+                if (!userField) userField = el;
             }
+        });
 
-            var userFilled = fillField(userSelectors, '$user');
-            var passFilled = fillField(passSelectors, '$pass');
+        if (userField) setNativeValue(userField, '$user');
+        if (passField) setNativeValue(passField, '$pass');
+    })();
+    """.trimIndent()
 
-            if (userFilled || passFilled) {
-                console.log('[RouterApp] Credenciales rellenadas');
-            }
-        })();
-        """.trimIndent()
-
-        webView.evaluateJavascript(js, null)
-    }
+    webView.evaluateJavascript(js, null)
+}
 
     private fun detectLoginForm(view: WebView) {
         val js = """
