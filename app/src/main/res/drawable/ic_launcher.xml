@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:fillColor="#0d1117"
+        android:pathData="M0,0 L108,0 L108,108 L0,108 Z" />
+    <!-- Router body -->
+    <path android:fillColor="#00ffc3"
+        android:pathData="M20,55 L88,55 L88,75 Q88,80 83,80 L25,80 Q20,80 20,75 Z" />
+    <!-- Antenas -->
+    <path android:fillColor="#00ffc3"
+        android:pathData="M35,55 L35,30 Q35,26 38,26 L40,26 Q43,26 43,30 L43,55 Z" />
+    <path android:fillColor="#00ffc3"
+        android:pathData="M65,55 L65,30 Q65,26 68,26 L70,26 Q73,26 73,30 L73,55 Z" />
+    <!-- Luces LED -->
+    <path android:fillColor="#0d1117"
+        android:pathData="M30,63 m-4,0 a4,4 0,1,0 8,0 a4,4 0,1,0 -8,0" />
+    <path android:fillColor="#00ffc3"
+        android:pathData="M30,63 m-3,0 a3,3 0,1,0 6,0 a3,3 0,1,0 -6,0" />
+    <path android:fillColor="#0d1117"
+        android:pathData="M45,63 m-4,0 a4,4 0,1,0 8,0 a4,4 0,1,0 -8,0" />
+    <path android:fillColor="#4a5568"
+        android:pathData="M45,63 m-3,0 a3,3 0,1,0 6,0 a3,3 0,1,0 -6,0" />
+    <path android:fillColor="#0d1117"
+        android:pathData="M60,63 m-4,0 a4,4 0,1,0 8,0 a4,4 0,1,0 -8,0" />
+    <path android:fillColor="#4a5568"
+        android:pathData="M60,63 m-3,0 a3,3 0,1,0 6,0 a3,3 0,1,0 -6,0" />
+</vector>

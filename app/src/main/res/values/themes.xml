@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.RouterApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#00ffc3</item>
+        <item name="colorPrimaryVariant">#00b894</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorSecondary">#00ffc3</item>
+        <item name="android:windowBackground">#080a0f</item>
+        <item name="android:statusBarColor">#0d1117</item>
+        <item name="android:navigationBarColor">#0d1117</item>
+    </style>
+</resources>
