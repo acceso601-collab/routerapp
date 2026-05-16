@@ -36,8 +36,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@android:drawable/ic_menu_rotate"
                 android:tint="#4a5568"
-                android:contentDescription="Recargar"
-                android:onClick="reloadPage" />
+                android:contentDescription="Recargar" />
 
         </LinearLayout>
 
