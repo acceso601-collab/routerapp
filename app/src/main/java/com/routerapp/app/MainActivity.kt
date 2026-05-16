@@ -37,6 +37,11 @@ class MainActivity : AppCompatActivity() {
 
         setupWebView()
 
+        // ✅ Botón de recarga manual
+        findViewById<ImageButton>(R.id.btnReload).setOnClickListener {
+            webView.reload()
+        }
+
         // Botón autofill flotante
         btnAutofill.setOnClickListener {
             if (hasCredentials) {
